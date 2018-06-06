@@ -97,17 +97,21 @@ cor.test(presidentApproval, presidentDisapproval, conf.level = 0.95)
 
 #====================Exercise 4
 
-presCor=cor(presidentDisapproval,presidentApproval)
+presCor = cor(presidentDisapproval,presidentApproval)
 #test null hypothesis  
-t.test(presidentDisapproval,presidentApproval, mu = 0 , conf.level = abs(presCor))
+#t.test(presidentDisapproval, presidentApproval, mu = 0, paired = TRUE, conf.level = abs(presCor))
+t.test(presidentDisapproval, presidentData$avg.price, mu = 0, paired = TRUE, conf.level = abs(presCor))
+
+#The Value of the p value is greater than the confidence interval, therefore we can assume that a president's
+#salary does not have an effect on his dissaprovement rating
 
 #====================Exercise 5
 
-years = presidentData$avg.price
+salary = presidentData$avg.price
 
-lm(years ~ presidentDisapproval)
-plot(years, presidentDisapproval)
-abline(lm(presidentDisapproval ~ years))
+lm(salary ~ presidentDisapproval)
+plot(salary, presidentDisapproval)
+abline(lm(presidentDisapproval ~ salary))
 
 
 
