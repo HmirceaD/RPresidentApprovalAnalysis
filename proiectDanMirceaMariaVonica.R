@@ -88,17 +88,21 @@ print(rightApproval)
 
 #====================Exercise 3
 
-#correlation coeffiecient
+#correlation coeffiecient of the two samples
 
-presCor = cor(presidentApproval, presidentDisapproval)
+presCor = cor(presidentApproval,presidentDisapproval)
 
-mini = mean(presCor)
+#confidence interval for the two with a 95% confidence interval
+cor.test(presidentApproval, presidentDisapproval, conf.level = 0.95)
 
-errorPresCor = qnorm(0.95)*
+#====================Exercise 4
 
-leftApproval = 
+presCor=cor(presidentDisapproval,presidentApproval)
+#test null hypothesis  
+t.test(presidentDisapproval,presidentApproval, mu = 0 , conf.level = abs(presCor))
 
 #====================Exercise 5
+
 years = presidentData$avg.price
 
 lm(years ~ presidentDisapproval)
